@@ -26,11 +26,12 @@ Currently it requires the given words to have a direction (horizontal / vertical
     left: 3
   }
 }
+
+// id = the text string
+// contentHtml = the HTML that should be injected to the content container
+// isHorizontal = should the text string be displayed horizontally or vertically
+// start = from which "grid cell" should the text string be written
 ```
-`id` = the text string
-`contentHtml` = the HTML that should be injected to the content container
-`isHorizontal` = should the text string be displayed horizontally or vertically
-`start` = from which "grid cell" should the text string be written
 
 A couple dimensions are also required in order for the positioning of the `start`ing position and the following characters to be processed:
 
