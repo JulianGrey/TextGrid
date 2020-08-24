@@ -5,11 +5,6 @@ interface ICell {
   height: number;
 }
 
-interface ILongestWord {
-  horizontal: number;
-  vertical: number;
-}
-
 interface IStartPosition {
   top: number;
   left: number;
@@ -34,8 +29,8 @@ class TextGrid {
     const elClassName: string = element.target.className.split(" ")[0].split("-")[0];
     const word: IWord = this.wordList.filter(word => word.id.toLowerCase() === elClassName)[0];
 
-    if (document.querySelector(".selected")) {
-      document.querySelector(".selected").classList.remove("selected");
+    if (document.querySelector(".grid-link.selected")) {
+      document.querySelector(".grid-link.selected").classList.remove("selected");
     }
     document.querySelector(`.${ elClassName }`).classList.add("selected");
     contentContainer.innerHTML = word.contentHtml;
@@ -44,23 +39,12 @@ class TextGrid {
   createTextGrid(): void {
     let elementString: string = "";
     let styleString: string = "";
-    let longestWord: ILongestWord = {
-      horizontal: 0,
-      vertical: 0
-    };
 
     this.wordList.forEach((word: IWord) => {
       const prefix: string = word.isHorizontal ? "h" : "v";
-      const stringLength: number = word.id.length;
 
       elementString += `<a href="javascript:;" class="${ word.id } grid-link ${ prefix }Word">`;
       styleString += `.${ word.id } { top: ${ this.cell.height * word.start.top }px; left: ${ this.cell.width * word.start.left }px; }`
-
-      if (word.isHorizontal) {
-        longestWord.horizontal = stringLength > longestWord.horizontal ? stringLength : longestWord.horizontal;
-      } else {
-        longestWord.vertical = stringLength > longestWord.vertical ? stringLength : longestWord.vertical;
-      }
 
       const textArray: Array<string> = word.id.split('');
       textArray.forEach((character: string, index: number) => {
