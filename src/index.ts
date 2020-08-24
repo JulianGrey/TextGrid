@@ -43,14 +43,14 @@ class TextGrid {
     this.wordList.forEach((word: IWord) => {
       const prefix: string = word.isHorizontal ? "h" : "v";
 
-      elementString += `<a href="javascript:;" class="${ word.id } grid-link ${ prefix }Word">`;
+      elementString += `<p class="${ word.id } grid-link ${ prefix }Word">`;
       styleString += `.${ word.id } { top: ${ this.cell.height * word.start.top }px; left: ${ this.cell.width * word.start.left }px; }`
 
       const textArray: Array<string> = word.id.split('');
       textArray.forEach((character: string, index: number) => {
         elementString += `<span class="${ word.id }-char char${ index + 1 }">${ character.toUpperCase() }</span>`;
       });
-      elementString += "</a>";
+      elementString += "</p>";
     });
 
     styleString += `.text-grid-wrapper__container__grid .grid-link span { width: ${ this.cell.width }px; height: ${ this.cell.height }px; }; }`;
