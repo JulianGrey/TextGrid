@@ -1,0 +1,55 @@
+$z-index-link-default: 0;
+$z-index-link-active: 1;
+$z-index-link-hover: 2;
+
+* {
+  box-sizing: border-box;
+  font-family: Verdana, Arial, sans-serif;
+  margin: auto;
+}
+
+.text-grid-wrapper {
+  &__content {
+    &__text {}
+  }
+
+  &__container {
+    &__grid {
+      position: relative;
+      padding: 0 10px;
+      height: 100%;
+      text-align: center;
+
+      .grid-link {
+        color: #aaa;
+        display: flex;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0;
+        position: absolute;
+        text-decoration: none;
+        z-index: $z-index-link-default;
+
+        & > span {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &:hover {
+          color: #555;
+          z-index: $z-index-link-hover;
+        }
+
+        &.selected {
+          color: #c00;
+          z-index: $z-index-link-active;
+        }
+
+        &.vWord {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
